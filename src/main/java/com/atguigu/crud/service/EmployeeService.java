@@ -18,7 +18,19 @@ public class EmployeeService {
     @Autowired
     EmployeeMapper employeeMapper;
 
+    /**
+     * 取得员工所有信息
+     * @return
+     */
     public List<Employee> getAll() {
         return employeeMapper.selectByExampleWithDept(null);
+    }
+
+    /**
+     * 员工保存方法
+     * @param employee
+     */
+    public void saveEmp(Employee employee) {
+        employeeMapper.insertSelective(employee);
     }
 }

@@ -298,7 +298,6 @@
         return true;
     };
 
-    //显示校验结果的提示信息
     function show_validatee_msg(ele,status,msg){
         //清除当前元素的检验状态
         $(ele).removeClass("is-valid is-invalid");
