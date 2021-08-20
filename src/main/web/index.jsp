@@ -247,9 +247,16 @@
 
     };
 
+    function reset_form(ele){
+        $(ele)[0].reset();
+        //清空表单样式
+        $(ele).find("*").removeClass("is-valid is-invalid");
+    }
 
     //点击新增按钮弹出模态框
     $("#emp_add_modal_btn").click(function (){
+        //*清除表单数据
+        reset_form("#exampleModal form");
         //发送ajax请求，查出部门信息，显示在下拉列表中
         getDepts();
         //弹出模态框
@@ -321,21 +328,60 @@
             return false;
         };
 
+        //*判断之前的ajax用户校验是否成功
+        if($(this).attr("ajax-va")=="false"){
+            return false;
+        }
+
         $.ajax({
             url:"${APP_PATH}/emp",
             type:"POST",
             data:$("#exampleModal form").serialize(),
             success:function (result){
-                // alert(result.msg);
-                //员工保存成功
-                //1、关闭模态框
-                $('#exampleModal').modal('hide');
-                //2、来到最后一页，显示刚才保存的数据,最后一页的信息来源于ajax请求
-                //发送ajax请求显示数据
-                //总记录数当做页码
-                to_page(totalRecord)
+                // *
+                if(result.code == 100){
+                    //员工保存成功
+                    //1、关闭模态框
+                    $('#exampleModal').modal('hide');
+                    //2、来到最后一页，显示刚才保存的数据,最后一页的信息来源于ajax请求
+                    //发送ajax请求显示数据
+                    //总记录数当做页码
+                    to_page(totalRecord)
+                }else{
+                    //*显示失败信息
+                    //*有哪个字段的错误信息就显示哪个字段
+                    if (undefined != result.extend.errorFields.email){
+                        //显示邮箱错误信息
+                        show_validatee_msg("#email_add_input","false",result.extend.errorFields.email);
+                    }
+                    if(undefined != result.extend.errorFields.empName){
+                        //显示员工的错误信息
+                        show_validatee_msg("#empName_add_input","false",result.extend.errorFields.empName);
+                    }
+
+                }
+
             }
         })
+    });
+
+    $("#empName_add_input").change(function (){
+        //发送ajax请求校验用户是否可用
+        var empName = this.value;
+        $.ajax({
+            url:"${APP_PATH}/checkuser",
+            data:"empName=" + empName,
+            type:"POST",
+            success:function (result){
+                if(result.code == 100){
+                    show_validatee_msg("#empName_add_input","success","用户名称可用");
+                    $("#empName_add_input").attr("ajax-va","success");
+                }else{
+                    show_validatee_msg("#empName_add_input","false",result.extend.va_msg);
+                    $("#empName_add_input").attr("ajax-va","false");
+                }
+            }
+        });
     });
 
 

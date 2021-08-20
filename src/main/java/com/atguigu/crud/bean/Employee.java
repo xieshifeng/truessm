@@ -1,13 +1,21 @@
 package com.atguigu.crud.bean;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
+
 public class Employee {
 
     private Integer empId;
 
+    //*
+    @Pattern(regexp = "(^[a-zA-Z0-9_-]{6,16}$)|(^[\\u2E80-\\u9FFF]+$)",message = "用户必须是6-16位数字和字母的组合或者2-5位中文")
     private String empName;
 
     private String gender;
 
+    //*
+//    @Email也可以使用
+    @Pattern(regexp = "^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$",message = "后端检验到邮箱格式不正确")
     private String email;
 
     private Integer dId;
