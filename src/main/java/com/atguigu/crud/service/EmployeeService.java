@@ -20,7 +20,7 @@ public class EmployeeService {
     EmployeeMapper employeeMapper;
 
     /**
-     * 取得员工所有信息
+     * 取得员工所有信息2
      * @return
      */
     public List<Employee> getAll() {
@@ -47,5 +47,38 @@ public class EmployeeService {
 
         long count = employeeMapper.countByExample(employeeExample);
         return count == 0;
+    }
+
+    /**
+     * 按照员工id查询员工
+     * @param id
+     * @return
+     */
+    public Employee getEmp(Integer id) {
+        Employee employee = employeeMapper.selectByPrimaryKey(id);
+        return employee;
+    }
+
+    /**
+     * 员工更新
+     * @param employee
+     */
+    public void updateEmp(Employee employee) {
+        employeeMapper.updateByPrimaryKeySelective(employee);
+    }
+
+    /**
+     * 员工删除
+     * @param id
+     */
+    public void deletEmp(Integer id) {
+        employeeMapper.deleteByPrimaryKey(id);
+    }
+
+    public void deleteBatch(List<Integer> ids) {
+        EmployeeExample employeeExample = new EmployeeExample();
+        EmployeeExample.Criteria criteria = employeeExample.createCriteria();
+        criteria.andEmpIdIn(ids);
+        employeeMapper.deleteByExample(employeeExample);
     }
 }
