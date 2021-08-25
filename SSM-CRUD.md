@@ -140,17 +140,19 @@ mybatis
 
 引入Spring mvc框架依赖 
 
-![image-20210812152724058](C:\Users\56597\AppData\Roaming\Typora\typora-user-images\image-20210812152724058.png)
+![image-20210812152724058](SSM-CRUD.assets/image-20210812152724058.png)
 
 ### 3、引入bootstrap前端框架
 
 下载boostrap，解压文件
 
-![image-20210812154138050](C:\Users\56597\AppData\Roaming\Typora\typora-user-images\image-20210812154138050.png)
+![image-20210812154138050](SSM-CRUD.assets/image-20210812154138050.png)
+
+
 
 将文件放入static文件夹内
 
-![image-20210812154629173](C:\Users\56597\AppData\Roaming\Typora\typora-user-images\image-20210812154629173.png)
+![image-20210812154629173](SSM-CRUD.assets/image-20210812154629173.png)
 
 根据官方文档，在index.jsp内引入相关内容
 
@@ -344,7 +346,7 @@ mybatis
 
 #### `mybatis`的配置文件
 
-![image-20210813122359565](C:\Users\56597\AppData\Roaming\Typora\typora-user-images\image-20210813122359565.png)
+![image-20210813122359565](SSM-CRUD.assets/image-20210813122359565.png)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -364,17 +366,17 @@ mybatis
 
 #### 新建ssm_crud表：
 
-![image-20210813120646657](C:\Users\56597\AppData\Roaming\Typora\typora-user-images\image-20210813120646657.png)
+![image-20210813120646657](SSM-CRUD.assets/image-20210813120646657.png)
 
-![image-20210813120706309](C:\Users\56597\AppData\Roaming\Typora\typora-user-images\image-20210813120706309.png)
+![image-20210813120706309](SSM-CRUD.assets/image-20210813120706309.png)
 
-![image-20210813120742378](C:\Users\56597\AppData\Roaming\Typora\typora-user-images\image-20210813120742378.png)
+![image-20210813120742378](SSM-CRUD.assets/image-20210813120742378.png)
 
 #### 使用mybatis的逆向工程生成对应的Bean以及Mapper:
 
 ##### 使用Maven添加Generator的依赖：
 
-![image-20210813122727929](C:\Users\56597\AppData\Roaming\Typora\typora-user-images\image-20210813122727929.png)
+![image-20210813122727929](SSM-CRUD.assets/image-20210813122727929.png)
 
 ```xml
 <!--        MBG-->
@@ -387,11 +389,11 @@ mybatis
 
 ##### 配置GeneratorXML：
 
-![image-20210813123232457](C:\Users\56597\AppData\Roaming\Typora\typora-user-images\image-20210813123232457.png)
+![image-20210813123232457](SSM-CRUD.assets/image-20210813123232457.png)
 
 在当前工程新建XML文件：
 
-![image-20210813123503240](C:\Users\56597\AppData\Roaming\Typora\typora-user-images\image-20210813123503240.png)
+![image-20210813123503240](SSM-CRUD.assets/image-20210813123503240.png)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -446,9 +448,9 @@ mybatis
 
 ##### 运行Generator：
 
-![image-20210813124620313](C:\Users\56597\AppData\Roaming\Typora\typora-user-images\image-20210813124620313.png)
+![image-20210813124620313](SSM-CRUD.assets/image-20210813124620313.png)
 
-![image-20210813124641655](C:\Users\56597\AppData\Roaming\Typora\typora-user-images\image-20210813124641655.png)
+![image-20210813124641655](SSM-CRUD.assets/image-20210813124641655.png)
 
 新建test/MBGTest.class：既可以运行
 
@@ -470,7 +472,7 @@ public class MGBTest {
 
 ##### 减少编译后文件的注释：
 
-![image-20210813130240667](C:\Users\56597\AppData\Roaming\Typora\typora-user-images\image-20210813130240667.png)
+![image-20210813130240667](SSM-CRUD.assets/image-20210813130240667.png)
 
 ```xml
 <!--        阻止生成注释-->
@@ -938,7 +940,7 @@ public class MvcTest {
 
 得到界面：
 
-![image-20210817105345465](C:\Users\56597\AppData\Roaming\Typora\typora-user-images\image-20210817105345465.png)
+![image-20210817105345465](SSM-CRUD.assets/image-20210817105345465.png)
 
 ## 查询2：使用ajax技术
 
@@ -1279,7 +1281,7 @@ public Msg getEmpsWithJson(@RequestParam(value="pn",defaultValue = "1") Integer 
 
 ### 添加模态框
 
-![image-20210820120853091](C:\Users\56597\AppData\Roaming\Typora\typora-user-images\image-20210820120853091.png)
+![image-20210820120853091](SSM-CRUD.assets/image-20210820120853091.png)
 
 #### 添加模态框的样式：
 
@@ -2022,7 +2024,7 @@ $("#emp_save_btn").click(function (){
 
 定义模态框，更改表单的id以及表单各项的id
 
-给按钮添加![image-20210821100341425](C:\Users\56597\AppData\Roaming\Typora\typora-user-images\image-20210821100341425.png)
+给按钮添加![image-20210821100341425](SSM-CRUD.assets/image-20210821100341425.png)
 
 添加新的类，为绑定同类事件做准备
 
